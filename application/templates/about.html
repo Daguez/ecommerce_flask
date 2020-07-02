@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+<p></p>
+
+{% block content %}
+
+    <div class="container1">
+        <img src="static/IMG/tatooine.jpg" alt="tatooine Jabba Corp." style="width:100%;">
+        <div class="text-block1">
+            <h4>Jabba Smuggling Corporation.</h4>
+            <p>Our headquarter is located in the hill overlooking Mos Eisley on beautiful Tatooine. <br> In your far
+                away part of the universe, we are located in downunder Cairns (Australia).<br> You can contact us <a
+                        href="{{ url_for('view.contact') }}">here</a>.
+            </p>
+            <p>Jabba Smuggling Corp.<br> 66 Slughorn street,<br> Manunda, 4870 QLD,<br> Australia.
+            </p>
+        </div>
+    </div>
+
+{% endblock %}

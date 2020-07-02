@@ -1,0 +1,49 @@
+{% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{ url_for('view.index') }}"> <img
+                src={{ url_for('static', filename='IMG/vader.png') }} alt="Brand" style="border-radius: 50%;" width="50"
+                height="50"> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item {% if index==True %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('view.index') }}">Home {% if index==True %}
+                        <span class="sr-only">(current)</span>{% endif %}</a>
+                </li>
+                <li class="nav-item {% if about==True %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('view.about') }}">About {% if about==True %}
+                        <span class="sr-only">(current)</span>{% endif %}</a>
+                </li>
+                <li class="nav-item {% if contact==True %}active{% endif %}">
+                    <a class="nav-link" href="{{ url_for('view.contact') }}">Contact us{% if contact==True %}
+                        <span class="sr-only">(current)</span>{% endif %}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="true" aria-expanded="false">Categories</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ url_for('view.cat1') }}">Starwars vehicle collection</a>
+                        <a class="dropdown-item" href="{{ url_for('view.cat2') }}">Starwars action figures</a>
+
+                    </div>
+                </li>
+            </ul>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('cart.cart') }}">View cart</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+        </div>
+    </nav>
+
+{% endblock %}

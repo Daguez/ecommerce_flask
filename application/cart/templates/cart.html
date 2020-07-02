@@ -1,0 +1,72 @@
+{% extends "cartlayout.html" %} {% block content %}
+    {% for item in order.items %}
+        <div class="container col-md-9">
+
+            <div class="row shadow-md my-row">
+                <div class="col-sm-9 card">
+                    <h5 class="card-header">{{ item.name }}</h5>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <a href="{{ url_for('view.item', itemid=item.id) }}"> <img class="img-thumbnail"
+                                                                                           src="static/IMG/{{ item.image }}"></a>
+                            </div>
+                            <div class="col-10">
+                                <!-- Item Description -->
+                                <p class="card-text">{{ item.itemShort }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <!-- right column has price and delete button -->
+                <div class="col-sm-3">
+                    <!-- delete item button -->
+                    <h5 style="color:blue;">{{ "$%.2f"|format(item.price) }}</h5>
+                    <form method="POST" action="{{ url_for('cart.deleteitem') }}">
+                        <input type="hidden" id="id" name="id" value="{{ item.id }}">
+                        <input type="submit" value="Delete" class="btn btn-outline-primary mb-3">
+
+                    </form>
+                </div>
+            </div>
+            {% if loop.last %}
+                {% if item.name !='' %}
+                    <div container col-md-9>
+                        <div class="row shadow-md my-row">
+                            <div class="col-sm-9 card">
+                                <h5 class="card-header">Total Price: {{ "$%.2f"|format(totalprice) }}</h5>
+
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <form action="{{ url_for('cart.emptycart') }}">
+                                                <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Empty
+                                                    Basket
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <div class="col-6">
+                                            <form action="{{ url_for('view.checkout') }}">
+                                                <input type="hidden" id="totalprice" name="totalprice"
+                                                       value="{{ "$%.2f"|format(totalprice) }}">
+                                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Place
+                                                    ORDER
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+        </div>
+
+    {% endfor %}
+
+
+
+{% endblock %}

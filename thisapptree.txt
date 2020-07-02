@@ -1,0 +1,64 @@
+.
+├── README.md
+├── __pycache__
+│   └── app.cpython-37.pyc
+├── app.py
+├── application
+│   ├── __init__.py
+│   ├── __pycache__
+│   │   ├── __init__.cpython-37.pyc
+│   │   ├── admin.cpython-37.pyc
+│   │   ├── cart.cpython-37.pyc
+│   │   ├── model.cpython-37.pyc
+│   │   ├── order.cpython-37.pyc
+│   │   └── view.cpython-37.pyc
+│   ├── admin.py
+│   ├── cart
+│   │   └── templates
+│   │       ├── cart.html
+│   │       ├── cartlayout.html
+│   │       └── topnav.html
+│   ├── cart.py
+│   ├── model.py
+│   ├── order.py
+│   ├── sqlite
+│   ├── static
+│   │   ├── CSS
+│   │   │   └── style.css
+│   │   └── IMG
+│   │       ├── atw.jpg
+│   │       ├── boba.jpg
+│   │       ├── bossk.jpg
+│   │       ├── darthvader.jpg
+│   │       ├── flame.jpg
+│   │       ├── gam7.jpg
+│   │       ├── han.jpg
+│   │       ├── imper.jpg
+│   │       ├── jawa.jpg
+│   │       ├── manda.jpg
+│   │       ├── sithtrooper.jpg
+│   │       ├── slave.jpg
+│   │       ├── snow.jpg
+│   │       ├── storm.jpg
+│   │       ├── storm2.jpg
+│   │       ├── tatooine.jpg
+│   │       ├── tie.jpg
+│   │       ├── vader.png
+│   │       └── xwing.jpg
+│   ├── templates
+│   │   ├── about.html
+│   │   ├── cat1.html
+│   │   ├── cat2.html
+│   │   ├── checkout.html
+│   │   ├── contact.html
+│   │   ├── includes
+│   │   │   ├── bottomnav.html
+│   │   │   └── topnav.html
+│   │   ├── index.html
+│   │   ├── item.html
+│   │   └── layout.html
+│   └── view.py
+├── requirement.txt
+└── thisapptree.txt
+
+10 directories, 51 files

@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+    {% for Item in thisitem %}
+
+        <div class="card mb-3">
+            <div class="row no-gutters">
+                <div class="col-md-6">
+                    <img src="{{ url_for('static', filename='IMG/'+Item.image) }}" class="card-img"
+                         alt="{{ Item.name }}">
+                </div>
+                <div class="col-md-6">
+                    <h5 class="card-title">{{ Item.name }}</h5>
+                    {{ Item.description | safe }}
+                    <div>
+                        <form action="{{ url_for('cart.cart') }}">
+                            <input type="hidden" id="item_id" name="item_id" value="{{ Item.id }}">
+                            <input type="hidden" id="token" name="token" value="index">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add to cart</button>
+
+                            <p style="color:blue;">Price: {{ "$%.2f"|format(Item.price) }}</p>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
