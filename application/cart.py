@@ -17,11 +17,11 @@ def cart(methods=['POST', 'GET']):
     # retrieve order if there is one
     if 'order_id' in session.keys():
         order = Order.query.get(session['order_id'])
-        print('order=', order)
+
         # order will be None if order_id stale
     else:
         # there is no order
-        print("order=None")
+
         order = None
 
     # create new order if needed
@@ -37,10 +37,11 @@ def cart(methods=['POST', 'GET']):
             order = None
     totalprice = 0
     if order is not None:
+        print("here")
         # Calculating the total price of the basket
         for item in order.items:
             totalprice = totalprice + item.price
-            print(totalprice)
+            print("totalprice=",totalprice)
     # are we adding an item?
     if item_id is not None:
         item = Item.query.get(item_id)
@@ -48,11 +49,18 @@ def cart(methods=['POST', 'GET']):
             try:
                 order.items.append(item)
                 db.session.commit()
-                print("order.items", order.items)
+                #print("order.items", order.items)
             except SQLAlchemyError as e:
-                print("hello")
+                #print("hello")
                 print(str(e))
                 return 'There is a problem'
+            totalprice = 0
+            if order is not None:
+                print("here")
+                # Calculating the total price of the basket
+                for item in order.items:
+                    totalprice = totalprice + item.price
+                    print("totalprice=", totalprice)
             # where did we come from cat1: Category 1 page; cat2: Category 2 page; index: index page
             if token == "cat1":
                 flash('Item have been added to the basket.')
@@ -63,6 +71,8 @@ def cart(methods=['POST', 'GET']):
             elif token == "index":
                 flash('Item have been added to the basket.')
                 return redirect(url_for('view.index'))
+            elif token == "cart":
+                return redirect(url_for('cart.cart'))
         else:
             flash('This is already in your basket.')
             print('item already in basket')
@@ -72,6 +82,8 @@ def cart(methods=['POST', 'GET']):
                 return redirect(url_for('view.cat2'))
             elif token == "index":
                 return redirect(url_for('view.index'))
+            elif token == "cart":
+                return redirect(url_for('cart.cart'))
 
     return render_template("cart.html", order=order, totalprice=totalprice)
 
